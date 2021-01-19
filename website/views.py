@@ -20,6 +20,7 @@ def website(request):
     breachDate = (data[random_breach]['BreachDate'])
     domain = (data[random_breach]['Domain'])
     domain = 'https://www.' + domain
+    domain_to_show = (data[random_breach]['Domain'])
     description = (data[random_breach]['Description'])
     description = re.sub('<a.*?>|</a>|<em>|</em>|&quot;', '', description)
     data_compromised = data[random_breach]['DataClasses']
@@ -29,7 +30,8 @@ def website(request):
         'breachDate': breachDate,
         'domain': domain,
         'description': description,
-        'data_compromised': data_compromised
+        'data_compromised': data_compromised,
+        'domain_to_show': domain_to_show
     }
 
     return render(request, 'base.html', context)
